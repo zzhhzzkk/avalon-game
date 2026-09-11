@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="640">
+  <rect width="360" height="640" fill="#141834"/>
+  <text x="180" y="320" fill="#c9d2ff" font-size="20" text-anchor="middle" font-family="sans-serif">正在进入阿瓦隆…</text>
+  <script><![CDATA[
+    (function () {
+      fetch('./index.html')
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          var blob = new Blob([html], { type: 'text/html' });
+          var url = URL.createObjectURL(blob);
+          window.location.replace(url);
+        })
+        .catch(function () {
+          var t = document.querySelector('text');
+          if (t) t.textContent = '加载失败，请刷新重试';
+        });
+    })();
+  ]]></script>
+</svg>
